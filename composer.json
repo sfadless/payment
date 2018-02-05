@@ -1,7 +1,5 @@
 {
     "name": "sfadless/payment",
-    "type": "project",
-    "license": "proprietary",
     "require": {
         "php": ">=5.6",
         "sfadless/http": "^1.2"
