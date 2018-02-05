@@ -1,5 +1,5 @@
 {
-    "name": "sfadless/http",
+    "name": "sfadless/payment",
     "type": "project",
     "license": "proprietary",
     "require": {
