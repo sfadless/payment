@@ -2,6 +2,7 @@
 
 namespace Sfadless\Payment\Resolver;
 
+use Sfadless\Payment\Transaction\Transaction;
 use Sfadless\Payment\Transaction\TransactionInterface;
 
 /**
@@ -16,6 +17,13 @@ interface TransactionResolverInterface
      * @throws \InvalidArgumentException
      */
     public function getTransaction($data);
+
+    /**
+     * @param Transaction $transaction
+     * @param $data
+     * @return TransactionInterface
+     */
+    public function fromNewTransaction(Transaction $transaction, $data);
 
     /**
      * @param TransactionInterface $transaction

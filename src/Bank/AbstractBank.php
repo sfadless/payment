@@ -6,6 +6,7 @@ use Sfadless\Payment\BankRestClientInterface;
 use Sfadless\Payment\Resolver\TransactionResolverInterface;
 use Sfadless\Payment\Transaction\Arguments\CheckTransactionArguments;
 use Sfadless\Payment\Transaction\Arguments\CreateTransactionArguments;
+use Sfadless\Payment\Transaction\Transaction;
 use Sfadless\Payment\Transaction\TransactionInterface;
 
 /**
@@ -62,7 +63,17 @@ abstract class AbstractBank implements BankInterface
 
         $data = $this->restClient->createRequest($args);
 
-        return $this->transactionResolver->getTransaction($data);
+        $transaction = new Transaction();
+
+        $transaction
+            ->setBank($this)
+            ->setOrderNumber($orderNumber)
+            ->setDescription($description)
+            ->setCost($cost)
+            ->setCreatedDatetime(new \DateTime())
+        ;
+
+        return $this->transactionResolver->fromNewTransaction($transaction, $data);
     }
 
     /**
