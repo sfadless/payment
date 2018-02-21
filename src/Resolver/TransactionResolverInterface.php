@@ -12,6 +12,8 @@ interface TransactionResolverInterface
     /**
      * @param $data mixed
      * @return TransactionInterface
+     *
+     * @throws \InvalidArgumentException
      */
     public function getTransaction($data);
 
